@@ -30,7 +30,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <header className="p-5 flex items-center justify-between border-b-2">
-            <div className="text-3xl font-bold">Post It</div>
+            <Link href="/">
+              <div className="text-3xl font-bold">Post It</div>
+            </Link>
             <nav className="flex gap-3 items-center">
               <Link href="/create">
                 <Button variant="outline">Create</Button>
