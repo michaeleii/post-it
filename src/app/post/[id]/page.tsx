@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import SinglePostItem from "./single-post";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import DeletePostButton from "./delete-post-button";
+import DeletePostForm from "./delete-post-form";
 
 export default async function PostPage({ params }: { params: { id: string } }) {
   const postId = Number(params.id);
@@ -20,7 +20,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
       </Link>
       <SinglePostItem post={post} />
       <div className="mt-5">
-        <DeletePostButton postId={post.id} />
+        <DeletePostForm postId={post.id} />
       </div>
     </main>
   );

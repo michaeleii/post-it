@@ -5,8 +5,17 @@ import { posts } from "@/db/schema/posts";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function deletePost(id: number) {
-  await db.delete(posts).where(eq(posts.id, id));
+type State = {
+  message?: string;
+};
+
+export async function deletePost(_: State, formData: FormData) {
+  const id = Number(formData.get("postId"));
+  try {
+    await db.delete(posts).where(eq(posts.id, id));
+  } catch (e) {
+    return { message: "Database Error: Failed to delete post." };
+  }
   revalidatePath("/");
   redirect("/");
 }
