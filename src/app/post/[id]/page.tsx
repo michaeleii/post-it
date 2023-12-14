@@ -4,6 +4,7 @@ import SinglePostItem from "./single-post";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import DeletePostForm from "./delete-post-form";
+import MainWrapper from "@/components/main-wrapper";
 
 export default async function PostPage({ params }: { params: { id: string } }) {
   const postId = Number(params.id);
@@ -14,7 +15,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <main className="pt-5 px-5 max-w-xl mx-auto">
+    <MainWrapper>
       <Link href="/">
         <Button className="w-full">Back</Button>
       </Link>
@@ -22,6 +23,6 @@ export default async function PostPage({ params }: { params: { id: string } }) {
       <div className="mt-5">
         <DeletePostForm postId={post.id} />
       </div>
-    </main>
+    </MainWrapper>
   );
 }
