@@ -5,7 +5,13 @@ import PostItem from "../post-item";
 import { searchPostQuery } from "@/db/queries/posts";
 
 async function SearchPostList({ query }: { query: string }) {
-  const posts = await searchPostQuery.all({ query });
+  if (!query) {
+    return null;
+  }
+  const posts = await searchPostQuery.all({ query: `%${query}%` });
+  if (!posts.length) {
+    return <p className="mt-5">No posts found.</p>;
+  }
   return (
     <section>
       {posts.map((post) => (

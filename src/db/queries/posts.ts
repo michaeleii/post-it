@@ -1,4 +1,4 @@
-import { db, eq, ilike, or, sql } from "..";
+import { db, eq, ilike, like, or, sql } from "..";
 import { posts } from "../schema/posts";
 import { users } from "../schema/users";
 
@@ -16,8 +16,8 @@ export const homeQuery = baseQuery.prepare();
 export const searchPostQuery = baseQuery
   .where(
     or(
-      ilike(posts.heading, `%${sql.placeholder("query")}%`),
-      ilike(posts.content, `%${sql.placeholder("query")}%`)
+      like(posts.heading, sql.placeholder("query")),
+      like(posts.content, sql.placeholder("query"))
     )
   )
   .prepare();
