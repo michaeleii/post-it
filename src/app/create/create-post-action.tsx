@@ -3,6 +3,7 @@
 import { db } from "@/db";
 import { insertPostSchema, posts } from "@/db/schema/posts";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 // This is temporary until @types/react-dom is updated
@@ -29,8 +30,12 @@ export async function createPost(_: State, formData: FormData) {
   }
 
   const post = validatedFields.data;
+  const userId = cookies().get("user_id")?.value;
+  if (!userId) {
+    redirect("/login");
+  }
   try {
-    await db.insert(posts).values({ ...post, userId: 1 });
+    await db.insert(posts).values({ ...post, userId: +userId });
   } catch (error) {
     return {
       message: "Database Error: Failed to create post.",

@@ -7,12 +7,12 @@ export default function FormSubmitButton({
   value,
   loadingValue,
 }: {
-  value: string;
-  loadingValue: string;
+  value: React.ReactNode;
+  loadingValue: React.ReactNode;
 }) {
   const { pending } = useFormStatus();
   return (
-    <Button className="mt-3" disabled={pending}>
+    <Button type="submit" className="mt-3 w-full" disabled={pending}>
       {pending ? loadingValue : value}
     </Button>
   );

@@ -3,9 +3,9 @@ import { posts } from "@/db/schema/posts";
 import { users } from "@/db/schema/users";
 
 const fakeUsers = [
-  { id: 1, firstName: "John", lastName: "Doe" },
-  { id: 2, firstName: "Alice", lastName: "Smith" },
-  { id: 3, firstName: "Bob", lastName: "Johnson" },
+  { id: 1, username: "john_doe", firstName: "John", lastName: "Doe" },
+  { id: 2, username: "alice_smith", firstName: "Alice", lastName: "Smith" },
+  { id: 3, username: "bob_ross", firstName: "Bob", lastName: "Ross" },
 ];
 
 const fakePosts = [
