@@ -21,4 +21,4 @@ export const insertPostSchema = createInsertSchema(posts, {
     schema.content
       .min(1, { message: "Content must be at least 1 character" })
       .max(100, { message: "Content must be less than 100 characters" }),
-});
+}).omit({ id: true, userId: true });
