@@ -13,7 +13,7 @@ async function SearchPostList({ query }: { query: string }) {
     return <p className="mt-5">No posts found.</p>;
   }
   return (
-    <section>
+    <section className="mt-5">
       {posts.map((post) => (
         <Link key={post.id} href={`/post/${post.id}`}>
           <PostItem post={post} />
