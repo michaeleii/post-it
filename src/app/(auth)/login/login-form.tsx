@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "./login-action";
 import { useFormState } from "react-dom";
-import FormSubmitButton from "@/app/create/form-submit-button";
+import FormSubmitButton from "@/components/form-submit-button";
 
 const initialState = { message: "" };
 

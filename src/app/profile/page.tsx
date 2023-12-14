@@ -2,7 +2,7 @@ import MainWrapper from "@/components/main-wrapper";
 import { profileQuery } from "@/db/queries/users";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import FormSubmitButton from "../create/form-submit-button";
+import FormSubmitButton from "../../components/form-submit-button";
 import { logout } from "./logout-action";
 
 export default async function Profile() {

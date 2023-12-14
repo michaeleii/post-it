@@ -3,7 +3,7 @@
 import { Loader2Icon, Trash2 } from "lucide-react";
 import { deletePost } from "./delete-post-action";
 import { useFormState } from "react-dom";
-import FormSubmitButton from "@/app/create/form-submit-button";
+import FormSubmitButton from "@/components/form-submit-button";
 
 const initialState = { message: "" };
 
@@ -13,6 +13,7 @@ export default function DeletePostForm({ postId }: { postId: number }) {
     <form action={formAction}>
       <input type="hidden" name="postId" value={postId} />
       <FormSubmitButton
+        variant="destructive"
         value={
           <>
             <Trash2 />

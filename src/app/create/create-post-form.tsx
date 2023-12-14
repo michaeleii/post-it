@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import FormSubmitButton from "./form-submit-button";
+import FormSubmitButton from "../../components/form-submit-button";
 import { createPost } from "./create-post-action";
 
 const initialState = { message: "", errors: {} };
