@@ -1,15 +1,29 @@
-import { db, eq, sql } from "..";
+import { db, eq, ilike, or, sql } from "..";
 import { posts } from "../schema/posts";
 import { users } from "../schema/users";
 
-export const homeQuery = db
+const baseQuery = db
   .select({
     id: posts.id,
     heading: posts.heading,
     content: posts.content,
   })
   .from(posts)
-  .innerJoin(users, eq(users.id, posts.userId))
+  .innerJoin(users, eq(users.id, posts.userId));
+
+export const homeQuery = baseQuery.prepare();
+
+export const searchPostQuery = baseQuery
+  .where(
+    or(
+      ilike(posts.heading, `%${sql.placeholder("query")}%`),
+      ilike(posts.content, `%${sql.placeholder("query")}%`)
+    )
+  )
+  .prepare();
+
+export const userPostsQuery = baseQuery
+  .where(eq(users.id, sql.placeholder("userId")))
   .prepare();
 
 export type Post = Awaited<ReturnType<typeof homeQuery.all>>[0];
