@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggler } from "@/components/theme-toggler";
-import { Button } from "@/components/ui/button";
-import { User2 } from "lucide-react";
+import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,22 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="p-5 flex items-center justify-between border-b-2">
-            <Link href="/">
-              <div className="text-3xl font-bold">Post It</div>
-            </Link>
-            <nav className="flex gap-3 items-center">
-              <Link href="/create">
-                <Button variant="outline">Create</Button>
-              </Link>
-              <Link href="/profile">
-                <Button size="icon" variant="ghost">
-                  <User2 />
-                </Button>
-              </Link>
-              <ThemeToggler />
-            </nav>
-          </header>
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
